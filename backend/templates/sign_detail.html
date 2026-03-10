@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ AstroMatch • Detalhes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fce4f0 0%, #f8d0e0 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 25px;
+            background: white;
+            color: #9b4e6b;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(155, 78, 107, 0.2);
+        }
+
+        .sign-card-principal {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(155, 78, 107, 0.2);
+        }
+
+        .sign-symbol {
+            font-size: 8em;
+            margin-bottom: 20px;
+        }
+
+        .sign-name {
+            font-size: 3em;
+            color: #4a2e3a;
+            margin-bottom: 15px;
+        }
+
+        .sign-element-tag {
+            display: inline-block;
+            padding: 12px 40px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .compat-title {
+            text-align: center;
+            margin: 40px 0 30px;
+        }
+
+        .compat-title h2 {
+            color: #9b4e6b;
+        }
+
+        .compat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .compat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(155, 78, 107, 0.1);
+        }
+
+        .compat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(155, 78, 107, 0.2);
+        }
+
+        .compat-symbol {
+            font-size: 3em;
+        }
+
+        .compat-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4a2e3a;
+            margin: 10px 0;
+        }
+
+        .compat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #9b4e6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-button">← voltar</a>
+        
+        <div id="sign-content">
+            <div style="text-align: center; padding: 50px;">carregando...</div>
+        </div>
+
+        <div class="footer">
+            <p>compatibilidade baseada nos elementos</p>
+        </div>
+    </div>
+
+    <script>
+        const pathParts = window.location.pathname.split('/');
+        const signId = pathParts[pathParts.length - 2];
+        
+        Promise.all([
+            fetch(`/api/signs/${signId}/`).then(r => r.json()),
+            fetch('/api/signs/').then(r => r.json())
+        ]).then(([sign, allSigns]) => {
+            const container = document.getElementById('sign-content');
+            
+            // Definir cor do elemento
+            let corElemento = '';
+            if (sign.element === 'Fogo') corElemento = '#ff6b6b';
+            else if (sign.element === 'Terra') corElemento = '#6b8e6b';
+            else if (sign.element === 'Ar') corElemento = '#6b9ec0';
+            else if (sign.element === 'Água' || sign.element === 'Agua') corElemento = '#9b6b9b';
+            else corElemento = '#a5779c';
+            
+            Promise.all(allSigns.map(other => 
+                fetch(`/api/signs/${sign.id}/compatibilidade/?com=${other.id}`)
+                    .then(r => r.json())
+                    .catch(() => null)
+            )).then(compatibilidades => {
+                
+                let compatCards = '';
+                compatibilidades.forEach((comp) => {
+                    if (comp && comp.signo2.id !== sign.id) {
+                        let corCompat = '';
+                        if (comp.compatibilidade >= 80) corCompat = '#b8a2d9';
+                        else if (comp.compatibilidade >= 60) corCompat = '#f0d9a0';
+                        else corCompat = '#f0a0a0';
+                        
+                        compatCards += `
+                            <div class="compat-card" onclick="window.location.href='/signo/${comp.signo2.id}/'">
+                                <div class="compat-symbol">${comp.signo2.simbolo}</div>
+                                <div class="compat-name">${comp.signo2.nome}</div>
+                                <div class="compat-value" style="color: ${corCompat};">${comp.compatibilidade}%</div>
+                                <div>${comp.signo2.elemento}</div>
+                            </div>
+                        `;
+                    }
+                });
+                
+                container.innerHTML = `
+                    <div class="sign-card-principal">
+                        <div class="sign-symbol">${sign.symbol}</div>
+                        <div class="sign-name">${sign.name}</div>
+                        <div class="sign-element-tag" style="background: ${corElemento};">${sign.element}</div>
+                    </div>
+                    
+                    <div class="compat-title">
+                        <h2>💞 compatibilidade</h2>
+                    </div>
+                    
+                    <div class="compat-grid">
+                        ${compatCards}
+                    </div>
+                `;
+            });
+        }).catch(error => {
+            document.getElementById('sign-content').innerHTML = `
+                <div style="text-align: center; padding: 50px;">
+                    💫 erro ao carregar
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

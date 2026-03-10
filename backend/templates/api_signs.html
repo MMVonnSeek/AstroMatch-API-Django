@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ AstroMatch • Horóscopo e Compatibilidade</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fce4f0 0%, #f8d0e0 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            color: #9b4e6b;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .star-menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .star-link {
+            text-decoration: none;
+            color: #9b4e6b;
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(155, 78, 107, 0.2);
+        }
+
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .sign-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(155, 78, 107, 0.2);
+        }
+
+        .sign-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(155, 78, 107, 0.3);
+        }
+
+        .sign-symbol {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .sign-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #4a2e3a;
+            margin-bottom: 10px;
+        }
+
+        .sign-element {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .json-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 5px 20px rgba(155, 78, 107, 0.15);
+        }
+
+        pre {
+            background: #2a1e24;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #9b4e6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ AstroMatch ✨</h1>
+            <p>descubra a magia dos signos</p>
+        </div>
+
+        <div class="star-menu">
+            <a href="/" class="star-link">✨ Início</a>
+            <a href="/api/signs/" class="star-link">🌟 API</a>
+            <a href="/admin/" class="star-link">⚡ Admin</a>
+        </div>
+
+        <h2 style="color: #9b4e6b; text-align: center;">todos os signos</h2>
+
+        <div class="signs-grid" id="signs-container">
+            <!-- Cards serão inseridos aqui -->
+        </div>
+
+        <div class="json-section">
+            <h3 style="color: #9b4e6b;">📦 dados da api</h3>
+            <pre id="json-data">Carregando...</pre>
+        </div>
+
+        <div class="footer">
+            <p>feito com 💕 para conectar almas</p>
+        </div>
+    </div>
+
+    <script>
+        fetch('/api/signs/')
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar JSON
+                document.getElementById('json-data').innerHTML = JSON.stringify(data, null, 2);
+                
+                // Criar cards
+                const container = document.getElementById('signs-container');
+                container.innerHTML = '';
+                
+                data.forEach(sign => {
+                    const card = document.createElement('div');
+                    card.className = 'sign-card';
+                    card.onclick = () => window.location.href = `/signo/${sign.id}/`;
+                    
+                    // Definir cor baseada no elemento - DIRETAMENTE
+                    let corElemento = '';
+                    if (sign.element === 'Fogo') {
+                        corElemento = '#ff6b6b';
+                    } else if (sign.element === 'Terra') {
+                        corElemento = '#6b8e6b';
+                    } else if (sign.element === 'Ar') {
+                        corElemento = '#6b9ec0';
+                    } else if (sign.element === 'Água' || sign.element === 'Agua') {
+                        corElemento = '#9b6b9b';
+                    } else {
+                        corElemento = '#a5779c';
+                    }
+                    
+                    card.innerHTML = `
+                        <div class="sign-symbol">${sign.symbol}</div>
+                        <div class="sign-name">${sign.name}</div>
+                        <div>
+                            <span class="sign-element" style="background: ${corElemento};">${sign.element}</span>
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => {
+                document.getElementById('signs-container').innerHTML = '<div style="text-align: center; padding: 50px;">Erro ao carregar signos</div>';
+                console.error('Erro:', error);
+            });
+    </script>
+</body>
+</html>
