@@ -15,9 +15,6 @@
   
  <img width="1800" height="900" alt="Screenshot" src="https://github.com/user-attachments/assets/0a4984c4-5a57-4983-be2c-349e564a5e16" />
 
- <img width="1800" height="900" alt="Screenshot2" src="https://github.com/user-attachments/assets/d06a0928-a18e-4e91-9fa8-b1babc7c5bb4" />
-
-
   <p><em>Interface bonita e intuitiva para visualizar todos os signos</em></p>
 </div>
 
