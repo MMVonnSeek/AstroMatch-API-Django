@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Autor-Max Muller-darkblue?style=for-the-badge&logo=" alt="MMVonnSeek">
   <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python" alt="Python">
   <img src="https://img.shields.io/badge/Django-4.2-green?style=for-the-badge&logo=django" alt="Django">
-  <img src="https://img.shields.io/badge/DRF-3.15-red?style=for-the-badge" alt="DRF">
+  <img src="https://img.shields.io/badge/DRF-3.15-darkred?style=for-the-badge" alt="DRF">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
 
   
