@@ -13,7 +13,8 @@
   <br>
   <br>
   
-  <img src="https://via.placeholder.com/800x400/667eea/ffffff?text=AstroMatch+API+Screenshot" alt="Screenshot">
+ <img width="1838" height="934" alt="Screenshot" src="https://github.com/user-attachments/assets/0a4984c4-5a57-4983-be2c-349e564a5e16" />
+
   <p><em>Interface bonita e intuitiva para visualizar todos os signos</em></p>
 </div>
 
@@ -233,43 +234,69 @@ _(Signo 1 com Signo 5)_
 
 ### Lista de signos
 
-json
-
 [
+
  {
+ 
  "id": 1,
+ 
  "name": "Áries",
+ 
  "element": "Fogo",
+ 
  "symbol": "♈"
+ 
  },
+ 
  {
+ 
  "id": 2,
+ 
  "name": "Leão",
+ 
  "element": "Fogo",
+ 
  "symbol": "♌"
+ 
  }
+ 
 ]
+
 
 ### Compatibilidade entre signos
 
-json
-
 {
+ 
  "signo1": {
+ 
  "id": 1,
+ 
  "nome": "Áries",
+ 
  "elemento": "Fogo",
+ 
  "simbolo": "♈"
+ 
  },
+ 
  "signo2": {
+ 
  "id": 5,
+ 
  "nome": "Virgem",
+ 
  "elemento": "Terra",
+ 
  "simbolo": "♍"
+ 
  },
+ 
  "compatibilidade": 50,
+ 
  "mensagem": "💔 Compatibilidade baixa. Precisam de muito diálogo.",
+ 
  "dica": "Equilíbrio entre ação e estabilidade."
+ 
 }   
 
 ----------
