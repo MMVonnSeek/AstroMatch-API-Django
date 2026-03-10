@@ -82,7 +82,7 @@ git clone https://github.com/MMVonnSeek/AstroMatch-API-Django.git
 
 ### Entre na pasta do projeto
 ```bash
-cd astromatch
+cd AstroMatch-API-Django
 ```
 _Se não tiver o Git instalado, baixe o ZIP do projeto e extraia!_
 
