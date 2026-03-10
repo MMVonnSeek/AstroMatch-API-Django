@@ -28,7 +28,7 @@ AstroMatch é uma API RESTful completa de astrologia que permite consultar infor
 
 **Tecnologia com propósito:** Combinando uma API robusta em Python e Django com uma interface que prioriza a experiência do usuário, este projeto demonstra habilidades avançadas em desenvolvimento full stack, provando que código de qualidade pode andar de mãos dadas com design emocional.
 
-**Open Source:** Este projeto é aberto para colaborações! Se você tem ideias, sugestões ou quer melhorar algo, fique à vontade para contribuir. Toda ajuda é bem-vinda!
+**Open Source:** Este projeto é aberto para colaborações! Se você tem ideias, sugestões ou quer melhorar algo, fique à vontade para contribuir. Toda ajuda é bem-vinda!❤️
 
 
 ## FERRAMENTAS E TECNOLOGIAS UTILIZADAS
