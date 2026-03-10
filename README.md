@@ -41,6 +41,7 @@ AstroMatch é uma API RESTful completa de astrologia que permite consultar infor
 | **Django REST Framework** | 3.15.1 | Criação da API REST |
 | **SQLite** | - | Banco de dados |
 
+
 ### Frontend
 | Tecnologia | Para que serve |
 |------------|-----------------|
@@ -48,6 +49,7 @@ AstroMatch é uma API RESTful completa de astrologia que permite consultar infor
 | **CSS3** | Estilização e design responsivo |
 | **JavaScript** | Interatividade e consumo da API |
 | **Fetch API** | Requisições assíncronas |
+
 
 ### Ferramentas de Desenvolvimento
 | Ferramenta | Uso |
@@ -58,6 +60,7 @@ AstroMatch é uma API RESTful completa de astrologia que permite consultar infor
 
 ---
 
+
 ##  COMO CLONAR E USAR
 
 ###  Pré-requisitos (o que precisa ter instalado)
@@ -67,55 +70,70 @@ Para verificar, abra o terminal e digite:
 ```bash
 python --version
 ```
-# PASSO 1: Clonar o repositório
 
 
-## Abra o terminal e digite:
+## PASSO 1: Clonar o repositório
+
+
+### Abra o terminal e digite:
 ```bash
 git clone https://github.com/seu-usuario/astromatch.git
 ```
-## Entre na pasta do projeto
+
+### Entre na pasta do projeto
 ```bash
 cd astromatch
 ```
 _Se não tiver o Git instalado, baixe o ZIP do projeto e extraia!_
 
-# PASSO 2: Criar ambiente virtual (recomendado)
 
 
-## No Linux/Mac:
+## PASSO 2: Criar ambiente virtual (recomendado)
+
+
+### No Linux/Mac:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
-## No Windows:
+
+### No Windows:
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-# PASSO 3: Instalar as dependências
 
-## Instalar os pacotes necessários
+## PASSO 3: Instalar as dependências
+
+
+
+### Instalar os pacotes necessários
 ```bash
 pip install django djangorestframework
 ```
-## Ou instalar tudo de uma vez (se tiver requirements.txt)
+
+
+### Ou instalar tudo de uma vez (se tiver requirements.txt)
 ```bash
 pip install -r requirements.txt
 ```
 
-# PASSO 4: Configurar o banco de dados
+
+## PASSO 4: Configurar o banco de dados
 
 
-## Entre na pasta do backend
+### Entre na pasta do backend
 ```bash
 cd backend
 ```
-## Criar as tabelas no banco
+
+### Criar as tabelas no banco
 python manage.py migrate
 
-# PASSO 5: Popular com os signos
+
+
+## PASSO 5: Popular com os signos
 
 
 ```bash
@@ -123,6 +141,7 @@ python manage.py shell
 ```
 
 Dentro do shell Python, cole isso:
+
 
 ```bash
 
@@ -146,13 +165,16 @@ for s in signos:
 print(f"{Sign.objects.count()} signos criados!")
 exit()
 ```
-# PASSO 6: Iniciar o servidor
+
+
+## PASSO 6: Iniciar o servidor
 
 ```bash
 python manage.py runserver
 ```
 
-# PASSO 7: Abrir no navegador
+
+## PASSO 7: Abrir no navegador
 
 Abra seu navegador e acesse:
 
@@ -179,6 +201,7 @@ http://127.0.0.1:8000/
         -    **Ar**: Azul
             
         -    **Água**: Verde-claro
+          
             
 2.  **Detalhes do signo** (clique em qualquer card)
     
@@ -195,6 +218,7 @@ http://127.0.0.1:8000/
         -   🔴 **Vermelho**: Baixa (abaixo 60%) - Desafios pela frente
             
 
+
 ## Para desenvolvedores (API REST)
 
 **Listar todos os signos:**
@@ -209,6 +233,7 @@ _(Troque o 1 pelo ID desejado)_
 GET http://127.0.0.1:8000/api/signs/1/compatibilidade/?com=5
 
 _(Signo 1 com Signo 5)_
+
 
 **Tabela de IDs dos signos:**
 
@@ -301,7 +326,7 @@ _(Signo 1 com Signo 5)_
 
 ----------
 
-## LICENÇA
+### LICENÇA
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://LICENSE) para mais detalhes.
 
