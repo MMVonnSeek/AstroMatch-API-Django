@@ -77,7 +77,7 @@ python --version
 
 ### Abra o terminal e digite:
 ```bash
-git clone https://github.com/seu-usuario/astromatch.git
+git clone https://github.com/MMVonnSeek/AstroMatch-API-Django.git
 ```
 
 ### Entre na pasta do projeto
