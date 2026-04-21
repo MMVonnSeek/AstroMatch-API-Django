@@ -330,7 +330,19 @@ _(Signo 1 com Signo 5)_
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://LICENSE) para mais detalhes.
 
-----------
+---
+
+## 💖 Apoie este projeto
+
+Se este projeto te ajudou, considere apoiar ❤️
+
+Você pode contribuir com um apoio único ou mensal e ajudar a manter este projeto ativo.
+
+👉 https://github.com/sponsors/MMVonnSeek
+
+Seu apoio ajuda diretamente no desenvolvimento de novas ferramentas e conteúdos 🙌
+
+---
 
 ## Contribuição
 
